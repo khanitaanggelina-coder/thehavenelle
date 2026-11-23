@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark-bold" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Havenelle — Property Advisor Tangerang | Windfield</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Playfair Display (Editorial Serif) & Plus Jakarta Sans (Modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ============================================================
+           DESIGN TOKENS & DUAL THEME SYSTEM
+           Tema 1: Dark Bold (Default — Editorial Gelap & Aksen Lime-Gold Tajam)
+           Tema 2: Warm Luxury (Charcoal Hangat, Off-White/Cream & Muted Gold)
+        ============================================================ */
+        :root,
+        [data-theme="dark-bold"] {
+            --bg-primary: #08080A;
+            --bg-secondary: #101014;
+            --bg-surface: #141418;
+            --bg-surface-hover: #1C1C22;
+            --text-primary: #FAFAFA;
+            --text-secondary: rgba(250, 250, 250, 0.76);
+            --text-muted: rgba(250, 250, 250, 0.50);
+            --accent: #DDF247;
+            --accent-soft: rgba(221, 242, 71, 0.14);
+            --border-subtle: rgba(250, 250, 250, 0.13);
+            --border-accent: rgba(221, 242, 71, 0.50);
+            --btn-primary-bg: #DDF247;
+            --btn-primary-text: #08080A;
+            --btn-primary-hover-bg: #FAFAFA;
+            --btn-primary-hover-text: #08080A;
+            --overlay-top: rgba(8, 8, 10, 0.62);
+            --overlay-mid: rgba(8, 8, 10, 0.68);
+            --overlay-bottom: rgba(8, 8, 10, 0.96);
+            --about-bg: #0E0E12;
+            --about-card: #15151B;
+            --about-text: #FAFAFA;
+            --about-subtext: rgba(250, 250, 250, 0.74);
+            --about-border: rgba(250, 250, 250, 0.11);
+        }
+
+        [data-theme="warm-luxury"] {
+            --bg-primary: #1B1917;
+            --bg-secondary: #24211E;
+            --bg-surface: #2A2622;
+            --bg-surface-hover: #342F2A;
+            --text-primary: #F5F0E8;
+            --text-secondary: rgba(245, 240, 232, 0.80);
+            --text-muted: rgba(245, 240, 232, 0.54);
+            --accent: #C5A368;
+            --accent-soft: rgba(197, 163, 104, 0.16);
+            --border-subtle: rgba(245, 240, 232, 0.14);
+            --border-accent: rgba(197, 163, 104, 0.50);
+            --btn-primary-bg: #C5A368;
+            --btn-primary-text: #1B1917;
+            --btn-primary-hover-bg: #F5F0E8;
+            --btn-primary-hover-text: #1B1917;
+            --overlay-top: rgba(27, 25, 23, 0.58);
+            --overlay-mid: rgba(27, 25, 23, 0.65);
+            --overlay-bottom: rgba(27, 25, 23, 0.96);
+            --about-bg: #F5F0E8;
+            --about-card: #FFFFFF;
+            --about-text: #1B1917;
+            --about-subtext: rgba(27, 25, 23, 0.72);
+            --about-border: rgba(27, 25, 23, 0.11);
+        }
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+        }
+        ul, ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+
+        /* Theme Utility Classes */
+        .t-bg-primary { background-color: var(--bg-primary); }
+        .t-bg-secondary { background-color: var(--bg-secondary); }
+        .t-bg-surface { background-color: var(--bg-surface); }
+        .t-text-primary { color: var(--text-primary); }
+        .t-text-secondary { color: var(--text-secondary); }
+        .t-text-muted { color: var(--text-muted); }
+        .t-accent { color: var(--accent); }
+        .t-bg-accent-soft { background-color: var(--accent-soft); }
+        .t-border { border-color: var(--border-subtle); }
+        .t-border-accent { border-color: var(--border-accent); }
+
+        .t-about-section {
+            background-color: var(--about-bg);
+            color: var(--about-text);
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+        .t-about-card {
+            background-color: var(--about-card);
+            border-color: var(--about-border);
+            transition: background-color 0.35s ease, border-color 0.35s ease;
+        }
+        .t-about-subtext { color: var(--about-subtext); }
+
+        /* Editorial Buttons */
+        .btn-primary {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            transition: all 0.25s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--btn-primary-hover-bg);
+            color: var(--btn-primary-hover-text);
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background-color: rgba(16, 16, 20, 0.62);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Full-Screen Snap Scrolling Container */
+        .snap-wrapper {
+            height: 100dvh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-snap-type: y proximity;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .snap-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .snap-wrapper {
+                scroll-snap-type: y mandatory;
+            }
+        }
+
+        .slide-section {
+            min-height: 100dvh;
+            width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Editorial Background Overlay */
+        .slide-overlay {
+            background: linear-gradient(
+                180deg,
+                var(--overlay-top) 0%,
+                var(--overlay-mid) 50%,
+                var(--overlay-bottom) 100%
+            );
+        }
+
+        /* Hero Smooth Background Slideshow */
+        .hero-bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1.3s ease-in-out, transform 7s ease-out;
+        }
+        .hero-bg-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Reveal Motion */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .slide-visible .fade-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 90ms; }
+        .delay-200 { transition-delay: 180ms; }
+        .delay-300 { transition-delay: 270ms; }
+
+        /* Side Nav Vertical Line Indicator (No Circles / No Bullets) */
+        .nav-step.active .step-bar {
+            background-color: var(--accent);
+            width: 24px;
+        }
+        .nav-step.active .step-num {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        /* Blueprint Mode Guide Styling */
+        .blueprint-note {
+            display: none;
+        }
+        body.blueprint-on .blueprint-note {
+            display: inline-flex;
+        }
+        body.blueprint-on .blueprint-slot {
+            outline: 1.5px dashed var(--accent);
+            outline-offset: 4px;
+            border-radius: 0.75rem;
+        }
+
+        /* Modal Transitions */
+        .modal-backdrop {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .modal-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-panel {
+            transform: translateY(18px) scale(0.98);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-backdrop.open .modal-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Form Input Styling */
+        .editorial-input {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .editorial-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-soft);
+        }
+        .editorial-input option {
+            background-color: #141418;
+            color: #FAFAFA;
+        }
+
+        /* Desktop Mobile-Preview Overlay Shell */
+        .phone-bezel {
+            width: 390px;
+            height: 844px;
+            max-height: calc(100dvh - 110px);
+            border-radius: 42px;
+            border: 8px solid #1E1E24;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.12);
+            overflow: hidden;
+            position: relative;
+            background: #08080A;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ==================== FIXED EDITORIAL NAVBAR ==================== -->
+    <header class="fixed top-0 left-0 right-0 z-40 px-3.5 sm:px-8 lg:px-12 py-3 bg-gradient-to-b from-black/85 via-black/55 to-transparent">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+            <!-- Brand: THE HAVENELLE | Windfield -->
+            <button onclick="scrollToSlide(0)" class="text-left group focus:outline-none cursor-pointer shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs sm:text-base font-bold tracking-[0.2em] uppercase text-white group-hover:opacity-85 transition-opacity">
+                        THE HAVENELLE
+                    </span>
+                    <span class="hidden sm:inline-block w-px h-3.5 bg-white/30"></span>
+                    <span class="hidden sm:inline-block text-[10px] font-medium tracking-[0.16em] uppercase text-white/75">
+                        Windfield
+                    </span>
+                </div>
+                <span class="sm:hidden block text-[9px] tracking-[0.16em] uppercase text-white/65 mt-0.5">
+                    Affiliated with Windfield
+                </span>
+            </button>
+
+            <!-- Right Controls: Mobile-First Compact Toolbar -->
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <!-- Desktop / HP Preview Switcher (Only visible on Desktop >= 1024px) -->
+                <div id="deviceSwitcherWrap" class="hidden lg:flex items-center p-0.5 rounded-full border border-white/20 bg-black/65 backdrop-blur-md">
+                    <button id="btnViewDesktop" onclick="closeMobilePreview()"
+                        class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-semibold bg-white text-black transition-all cursor-pointer"
+                        title="Tampilan Desktop">
+                        <i data-lucide="monitor" class="w-3.5 h-3.5"></i>
+                        <span>Desktop</span>
+                    </button>
+                    <button id="btnViewMobile" onclick="openMobilePreview()"
+                        class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-medium text-white/80 hover:text-white transition-all cursor-pointer"
+                        title="Simulasi Layar HP 390 x 844 px">
+                        <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+                        <span>HP</span>
+                    </button>
+                </div>
+
+                <!-- Theme Switcher Pill -->
+                <button id="themeToggleBtn" onclick="toggleTheme()"
+                    class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium border border-white/20 bg-black/65 backdrop-blur-md text-white hover:border-[var(--accent)] transition-all cursor-pointer"
+                    title="Ganti tema warna">
+                    <span id="themeSwatch" class="w-2.5 h-2.5 rounded-sm bg-[#DDF247] shrink-0"></span>
+                    <span id="themeLabel" class="hidden sm:inline whitespace-nowrap">Tema 1: Dark Bold</span>
+                    <span id="themeLabelShort" class="sm:hidden whitespace-nowrap">Tema 1</span>
+                </button>
+
+                <!-- Blueprint Mode Toggle -->
+                <button id="blueprintToggleBtn" onclick="toggleBlueprint()"
+                    class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium border border-white/20 bg-black/65 backdrop-blur-md text-white/85 hover:border-[var(--accent)] transition-all cursor-pointer"
+                    title="Tampilkan atau sembunyikan panduan slot foto & teks">
+                    <i data-lucide="layout-template" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span id="blueprintLabel" class="hidden md:inline whitespace-nowrap">Blueprint: OFF</span>
+                </button>
+
+                <!-- Log Leads Button -->
+                <button onclick="openLeadsModal()"
+                    class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium border border-white/20 bg-black/65 backdrop-blur-md text-white/90 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all cursor-pointer"
+                    title="Lihat data klik CTA & customer lead">
+                    <i data-lucide="database" class="w-3.5 h-3.5 shrink-0"></i>
+                    <span class="hidden sm:inline">Log Leads</span>
+                    <span id="leadsCountBadge" class="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-white/15 text-white">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== SIDE SLIDE LINE INDICATORS (NO BULLETS) ==================== -->
+    <aside class="fixed right-4 lg:right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end gap-4">
+        <button onclick="scrollToSlide(0)" class="nav-step active group flex items-center gap-2.5 focus:outline-none cursor-pointer" data-index="0">
+            <span class="text-[11px] uppercase tracking-widest text-white/0 group-hover:text-white transition-all bg-black/80 px-2.5 py-1 rounded-md backdrop-blur-sm">Austin Residence</span>
+            <span class="step-num text-[10px] font-semibold text-white/50 transition-all">01</span>
+            <span class="step-bar w-3 h-[2px] bg-white/40 transition-all"></span>
+        </button>
+        <button onclick="scrollToSlide(1)" class="nav-step group flex items-center gap-2.5 focus:outline-none cursor-pointer" data-index="1">
+            <span class="text-[11px] uppercase tracking-widest text-white/0 group-hover:text-white transition-all bg-black/80 px-2.5 py-1 rounded-md backdrop-blur-sm">Summarecon Serpong</span>
+            <span class="step-num text-[10px] font-semibold text-white/50 transition-all">02</span>
+            <span class="step-bar w-3 h-[2px] bg-white/40 transition-all"></span>
+        </button>
+        <button onclick="scrollToSlide(2)" class="nav-step group flex items-center gap-2.5 focus:outline-none cursor-pointer" data-index="2">
+            <span class="text-[11px] uppercase tracking-widest text-white/0 group-hover:text-white transition-all bg-black/80 px-2.5 py-1 rounded-md backdrop-blur-sm">Alam Sutera / BSD</span>
+            <span class="step-num text-[10px] font-semibold text-white/50 transition-all">03</span>
+            <span class="step-bar w-3 h-[2px] bg-white/40 transition-all"></span>
+        </button>
+        <button onclick="scrollToSlide(3)" class="nav-step group flex items-center gap-2.5 focus:outline-none cursor-pointer" data-index="3">
+            <span class="text-[11px] uppercase tracking-widest text-white/0 group-hover:text-white transition-all bg-black/80 px-2.5 py-1 rounded-md backdrop-blur-sm">Tentang Kami</span>
+            <span class="step-num text-[10px] font-semibold text-white/50 transition-all">04</span>
+            <span class="step-bar w-3 h-[2px] bg-white/40 transition-all"></span>
+        </button>
+        <button onclick="scrollToSlide(4)" class="nav-step group flex items-center gap-2.5 focus:outline-none cursor-pointer" data-index="4">
+            <span class="text-[11px] uppercase tracking-widest text-white/0 group-hover:text-white transition-all bg-black/80 px-2.5 py-1 rounded-md backdrop-blur-sm">Konsultasi</span>
+            <span class="step-num text-[10px] font-semibold text-white/50 transition-all">05</span>
+            <span class="step-bar w-3 h-[2px] bg-white/40 transition-all"></span>
+        </button>
+    </aside>
+
+    <!-- ==================== MAIN SNAP SCROLL CONTAINER ==================== -->
+    <main id="snapContainer" class="snap-wrapper">
+
+        <!-- ================================================================ -->
+        <!-- SLIDE 1: HIGHLIGHT — AUSTIN RESIDENCE (PARAMOUNT GADING SERPONG) -->
+        <!-- ================================================================ -->
+        <section id="slide-0" class="slide-section t-bg-primary overflow-hidden slide-visible">
+            <!-- Full-bleed Architectural Slideshow -->
+            <div class="absolute inset-0 z-0">
+                <div class="hero-bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=85');"></div>
+                <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=85');"></div>
+                <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=85');"></div>
+                <div class="absolute inset-0 slide-overlay"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-7 sm:pb-10 flex flex-col justify-between min-h-[100dvh]">
+                <div class="my-auto max-w-3xl">
+                    <!-- Blueprint Guide Badge -->
+                    <div class="blueprint-note items-center gap-2 px-3 py-1 rounded-lg border t-border-accent bg-black/75 text-[11px] t-accent mb-3">
+                        <i data-lucide="camera" class="w-3.5 h-3.5 shrink-0"></i>
+                        <span>SLOT FOTO ASLI: Fasad, Show Unit &amp; Clubhouse Austin Residence</span>
+                    </div>
+
+                    <!-- Eyebrow: Developer / Area with Thin Vertical Divider -->
+                    <div class="fade-up flex flex-wrap items-center gap-2.5 mb-3 sm:mb-4">
+                        <span class="w-6 sm:w-8 h-[2px]" style="background-color: var(--accent);"></span>
+                        <span class="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase t-accent">
+                            PARAMOUNT GADING SERPONG
+                        </span>
+                        <span class="w-px h-3 bg-white/30"></span>
+                        <span class="text-[11px] sm:text-xs font-medium tracking-[0.16em] uppercase t-text-secondary">
+                            Paramount Land
+                        </span>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 class="fade-up delay-100 font-serif text-4xl sm:text-6xl lg:text-7xl font-semibold leading-[1.06] tracking-tight t-text-primary mb-3.5 sm:mb-5">
+                        Austin <span class="italic font-normal t-accent">Residence</span>
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="fade-up delay-200 text-sm sm:text-lg t-text-secondary font-light leading-relaxed max-w-2xl mb-5 sm:mb-6">
+                        Hunian Modern Ranch bergaya Classic American dengan <span class="t-text-primary font-medium">Expandable Backyard</span>, <span class="t-text-primary font-medium">Carport 2 Mobil</span>, dan <span class="t-text-primary font-medium">Exclusive Clubhouse</span>.
+                    </p>
+
+                    <!-- Clean Feature Chips (No Bullets) -->
+                    <div class="fade-up delay-200 flex flex-wrap gap-2 mb-6 sm:mb-8">
+                        <span class="px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-medium bg-white/10 border border-white/15 text-white/90 backdrop-blur-sm">Smart Door Lock Onassis</span>
+                        <span class="px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-medium bg-white/10 border border-white/15 text-white/90 backdrop-blur-sm">EV Charging 3 Phase</span>
+                        <span class="px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-medium bg-white/10 border border-white/15 text-white/90 backdrop-blur-sm">Electric Water Heater</span>
+                        <span class="px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-medium bg-white/10 border border-white/15 text-white/90 backdrop-blur-sm">Water Filter</span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="fade-up delay-300 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <button onclick="handlePropertyCTA('Austin Residence - Paramount Gading Serpong', 'Minta Pricelist & Simulasi KPR')"
+                            class="btn-primary px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl cursor-pointer">
+                            <i data-lucide="message-circle" class="w-4 h-4 shrink-0"></i>
+                            <span>Minta Pricelist &amp; Simulasi KPR</span>
+                        </button>
+                        <button onclick="openAustinSpecsModal()"
+                            class="btn-secondary px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl font-medium text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 cursor-pointer">
+                            <i data-lucide="file-text" class="w-4 h-4 shrink-0"></i>
+                            <span>Lihat Spesifikasi Lengkap</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bottom Specs Grid (Clean Divided Columns, Zero Bullets) -->
+                <div class="fade-up delay-300 border-t t-border pt-4 sm:pt-5 mt-6">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
+                        <div class="border-l-2 t-border-accent pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Tipe 6x16</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">LT 96 m² / LB 86 m²</p>
+                        </div>
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Tipe 8x14-16</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">LT 112-128 m² / LB 119 m²</p>
+                        </div>
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Fasilitas</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">Exclusive Clubhouse</p>
+                        </div>
+                        <div class="blueprint-slot border-l-2 t-border-accent pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-accent">Harga Mulai</p>
+                            <p class="text-xs sm:text-base font-semibold t-accent mt-0.5">Mulai Rp [Harga] M-an</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 sm:mt-5 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <button onclick="setHeroSlide(0)" aria-label="Slide Foto 1" class="hero-ind w-8 h-1 rounded-full transition-all cursor-pointer" style="background-color: var(--accent);"></button>
+                            <button onclick="setHeroSlide(1)" aria-label="Slide Foto 2" class="hero-ind w-4 h-1 rounded-full bg-white/30 transition-all cursor-pointer"></button>
+                            <button onclick="setHeroSlide(2)" aria-label="Slide Foto 3" class="hero-ind w-4 h-1 rounded-full bg-white/30 transition-all cursor-pointer"></button>
+                        </div>
+                        <button onclick="scrollToSlide(1)" class="flex items-center gap-1.5 text-[11px] sm:text-xs t-text-secondary hover:t-accent transition-colors cursor-pointer">
+                            <span>Geser ke bawah</span>
+                            <i data-lucide="arrow-down" class="w-3.5 h-3.5 animate-bounce"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SLIDE 2: SLOT PROPERTI 2 — SUMMARECON SERPONG                    -->
+        <!-- ================================================================ -->
+        <section id="slide-1" class="slide-section t-bg-primary overflow-hidden">
+            <!-- Full-bleed Background -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1920&q=85');"></div>
+                <div class="absolute inset-0 slide-overlay"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-7 sm:pb-10 flex flex-col justify-between min-h-[100dvh]">
+                <div class="my-auto max-w-3xl">
+                    <div class="blueprint-note items-center gap-2 px-3 py-1 rounded-lg border t-border-accent bg-black/75 text-[11px] t-accent mb-3">
+                        <i data-lucide="camera" class="w-3.5 h-3.5 shrink-0"></i>
+                        <span>SLOT FOTO &amp; DETAIL: Unit Pilihan Summarecon Serpong (1-2M)</span>
+                    </div>
+
+                    <div class="fade-up flex flex-wrap items-center gap-2.5 mb-3 sm:mb-4">
+                        <span class="w-6 sm:w-8 h-[2px]" style="background-color: var(--accent);"></span>
+                        <span class="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase t-accent">
+                            SUMMARECON SERPONG
+                        </span>
+                        <span class="w-px h-3 bg-white/30"></span>
+                        <span class="text-[11px] sm:text-xs font-medium tracking-[0.16em] uppercase t-text-secondary">
+                            Tangerang
+                        </span>
+                    </div>
+
+                    <h2 class="fade-up delay-100 blueprint-slot font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] tracking-tight t-text-primary mb-4">
+                        [Nama Cluster Pilihan]
+                    </h2>
+
+                    <p class="fade-up delay-200 text-sm sm:text-lg t-text-secondary font-light leading-relaxed max-w-2xl mb-6 sm:mb-8">
+                        Hunian cluster modern di kawasan Summarecon Serpong yang dirancang untuk keluarga muda di segmen Rp 1-2M-an. Foto asli dan spesifikasi lengkap siap dimasukkan.
+                    </p>
+
+                    <div class="fade-up delay-300 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <button onclick="handlePropertyCTA('Cluster Pilihan - Summarecon Serpong', 'Tanya Pricelist & Ketersediaan')"
+                            class="btn-primary px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl cursor-pointer">
+                            <i data-lucide="message-circle" class="w-4 h-4 shrink-0"></i>
+                            <span>Tanya Unit Summarecon Serpong</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bottom Specs Grid -->
+                <div class="fade-up delay-300 border-t t-border pt-4 sm:pt-5 mt-6">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Tipe Unit</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">[Tipe Menyusul]</p>
+                        </div>
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Luas Tanah / Bangunan</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">[LT / LB Menyusul]</p>
+                        </div>
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Keunggulan</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">Akses Tol &amp; Mall SMS</p>
+                        </div>
+                        <div class="blueprint-slot border-l-2 t-border-accent pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-accent">Harga Mulai</p>
+                            <p class="text-xs sm:text-base font-semibold t-accent mt-0.5">Mulai Rp [Harga] M-an</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SLIDE 3: SLOT PROPERTI 3 — ALAM SUTERA / BSD CITY                -->
+        <!-- ================================================================ -->
+        <section id="slide-2" class="slide-section t-bg-primary overflow-hidden">
+            <!-- Full-bleed Background -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1920&q=85');"></div>
+                <div class="absolute inset-0 slide-overlay"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-7 sm:pb-10 flex flex-col justify-between min-h-[100dvh]">
+                <div class="my-auto max-w-3xl">
+                    <div class="blueprint-note items-center gap-2 px-3 py-1 rounded-lg border t-border-accent bg-black/75 text-[11px] t-accent mb-3">
+                        <i data-lucide="camera" class="w-3.5 h-3.5 shrink-0"></i>
+                        <span>SLOT FOTO &amp; DETAIL: Unit Pilihan Alam Sutera / BSD City (1-2M)</span>
+                    </div>
+
+                    <div class="fade-up flex flex-wrap items-center gap-2.5 mb-3 sm:mb-4">
+                        <span class="w-6 sm:w-8 h-[2px]" style="background-color: var(--accent);"></span>
+                        <span class="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase t-accent">
+                            ALAM SUTERA
+                        </span>
+                        <span class="w-px h-3 bg-white/30"></span>
+                        <span class="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase t-accent">
+                            BSD CITY
+                        </span>
+                    </div>
+
+                    <h2 class="fade-up delay-100 blueprint-slot font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] tracking-tight t-text-primary mb-4">
+                        [Nama Cluster Pilihan]
+                    </h2>
+
+                    <p class="fade-up delay-200 text-sm sm:text-lg t-text-secondary font-light leading-relaxed max-w-2xl mb-6 sm:mb-8">
+                        Pilihan rumah cluster eksklusif di koridor Alam Sutera dan BSD City dengan lingkungan asri, keamanan 24 jam, serta potensi investasi tinggi.
+                    </p>
+
+                    <div class="fade-up delay-300 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <button onclick="handlePropertyCTA('Cluster Pilihan - Alam Sutera / BSD City', 'Tanya Pricelist & Ketersediaan')"
+                            class="btn-primary px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl cursor-pointer">
+                            <i data-lucide="message-circle" class="w-4 h-4 shrink-0"></i>
+                            <span>Tanya Unit Alam Sutera / BSD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bottom Specs Grid -->
+                <div class="fade-up delay-300 border-t t-border pt-4 sm:pt-5 mt-6">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Tipe Unit</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">[Tipe Menyusul]</p>
+                        </div>
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Luas Tanah / Bangunan</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">[LT / LB Menyusul]</p>
+                        </div>
+                        <div class="border-l-2 t-border pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-text-muted">Fasilitas</p>
+                            <p class="text-xs sm:text-sm font-medium t-text-primary mt-0.5">Clubhouse &amp; Taman Hijau</p>
+                        </div>
+                        <div class="blueprint-slot border-l-2 t-border-accent pl-3">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-wider t-accent">Harga Mulai</p>
+                            <p class="text-xs sm:text-base font-semibold t-accent mt-0.5">Mulai Rp [Harga] M-an</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SLIDE 4: TENTANG THE HAVENELLE (CLEAN CARD GRID, ZERO BULLETS)   -->
+        <!-- ================================================================ -->
+        <section id="slide-3" class="slide-section t-about-section py-20 sm:py-24 px-4 sm:px-8 lg:px-12">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="max-w-3xl fade-up">
+                    <div class="flex flex-wrap items-center gap-2.5 mb-3 sm:mb-4">
+                        <span class="w-6 sm:w-8 h-[2px]" style="background-color: var(--accent);"></span>
+                        <span class="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase t-accent">
+                            TENTANG THE HAVENELLE
+                        </span>
+                        <span class="w-px h-3 bg-current opacity-25"></span>
+                        <span class="text-[11px] sm:text-xs font-medium tracking-[0.16em] uppercase opacity-70">
+                            WINDFIELD NETWORK
+                        </span>
+                    </div>
+
+                    <h2 class="font-serif text-3xl sm:text-5xl font-semibold leading-[1.12] mb-4 sm:mb-5">
+                        Partner Properti Independen Spesialis Area Tangerang.
+                    </h2>
+
+                    <p class="text-sm sm:text-base t-about-subtext font-light leading-relaxed mb-6 sm:mb-8">
+                        Sebagai agen properti perorangan di bawah jaringan <strong class="font-semibold">Windfield</strong>, The Havenelle berfokus membantu Anda menemukan hunian <em>cluster</em> terbaik di <strong class="font-semibold">Paramount, Alam Sutera, Summarecon, dan BSD</strong>. Pendampingan personal dari tahap pemilihan unit, <em>private viewing</em>, hingga pengajuan KPR secara transparan.
+                    </p>
+                </div>
+
+                <!-- 4 Clean Value Cards (No Bullets) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 mb-7 sm:mb-9 fade-up delay-100">
+                    <div class="t-about-card p-5 rounded-2xl border">
+                        <div class="w-9 h-9 rounded-xl t-bg-accent-soft t-accent flex items-center justify-center mb-3.5">
+                            <i data-lucide="building-2" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="text-sm sm:text-base font-semibold mb-1.5">Developer Utama</h3>
+                        <p class="text-xs sm:text-sm t-about-subtext leading-relaxed">
+                            Akses langsung ke stok resmi dan promo terbaru dari Paramount, Alam Sutera, Summarecon, dan BSD.
+                        </p>
+                    </div>
+
+                    <div class="t-about-card p-5 rounded-2xl border">
+                        <div class="w-9 h-9 rounded-xl t-bg-accent-soft t-accent flex items-center justify-center mb-3.5">
+                            <i data-lucide="calculator" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="text-sm sm:text-base font-semibold mb-1.5">Pendampingan KPR</h3>
+                        <p class="text-xs sm:text-sm t-about-subtext leading-relaxed">
+                            Bantuan simulasi cicilan, perbandingan bunga bank, dan pengurusan dokumen KPR hingga akad.
+                        </p>
+                    </div>
+
+                    <div class="t-about-card p-5 rounded-2xl border">
+                        <div class="w-9 h-9 rounded-xl t-bg-accent-soft t-accent flex items-center justify-center mb-3.5">
+                            <i data-lucide="calendar-check" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="text-sm sm:text-base font-semibold mb-1.5">Private Viewing</h3>
+                        <p class="text-xs sm:text-sm t-about-subtext leading-relaxed">
+                            Jadwal kunjungan <em>show unit</em> fleksibel yang disesuaikan dengan waktu luang Anda dan keluarga.
+                        </p>
+                    </div>
+
+                    <div class="t-about-card p-5 rounded-2xl border">
+                        <div class="w-9 h-9 rounded-xl t-bg-accent-soft t-accent flex items-center justify-center mb-3.5">
+                            <i data-lucide="compass" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="text-sm sm:text-base font-semibold mb-1.5">Saran Objektif</h3>
+                        <p class="text-xs sm:text-sm t-about-subtext leading-relaxed">
+                            Rekomendasi jujur sesuai budget Rp 1-2M-an dan kebutuhan akses harian Anda tanpa tekanan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Instagram CTA + Next Section -->
+                <div class="fade-up delay-200 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <a href="https://instagram.com/thehavenelle" target="_blank" rel="noopener noreferrer"
+                        onclick="logCtaEvent('Instagram @thehavenelle')"
+                        class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border t-border-accent t-bg-accent-soft t-accent font-semibold text-xs sm:text-sm hover:opacity-90 transition-all">
+                        <i data-lucide="instagram" class="w-4 h-4 shrink-0"></i>
+                        <span>Lihat Update di @thehavenelle</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 shrink-0"></i>
+                    </a>
+                    <button onclick="scrollToSlide(4)"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border t-border text-xs sm:text-sm font-medium t-about-subtext hover:t-accent transition-colors cursor-pointer">
+                        <span>Konsultasi &amp; Cari Unit Lain</span>
+                        <i data-lucide="arrow-down" class="w-4 h-4 shrink-0"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SLIDE 5: KONSULTASI & CARI UNIT LAIN (LANGSUNG KE WHATSAPP)      -->
+        <!-- ================================================================ -->
+        <section id="slide-4" class="slide-section t-bg-primary pt-20 sm:pt-24 pb-7 px-4 sm:px-8 lg:px-12 justify-between">
+            <div class="max-w-2xl mx-auto w-full my-auto">
+                <!-- Header -->
+                <div class="text-center mb-6 sm:mb-8 fade-up">
+                    <div class="inline-flex items-center gap-2.5 mb-2.5">
+                        <span class="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase t-accent">KONSULTASI GRATIS</span>
+                        <span class="w-px h-3 bg-white/30"></span>
+                        <span class="text-[11px] sm:text-xs font-medium tracking-[0.16em] uppercase t-text-muted">THE HAVENELLE</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-semibold t-text-primary leading-tight mb-2.5">
+                        Cari Unit Cluster yang <span class="italic font-normal t-accent">Paling Pas.</span>
+                    </h2>
+                    <p class="text-xs sm:text-base t-text-secondary font-light max-w-lg mx-auto">
+                        Isi 4 data singkat di bawah ini untuk langsung terhubung ke WhatsApp The Havenelle.
+                    </p>
+                </div>
+
+                <!-- Compact Direct-to-WhatsApp Form (No Preview Box) -->
+                <form id="consultForm" onsubmit="submitConsultationForm(event)"
+                    class="fade-up delay-100 p-5 sm:p-8 rounded-2xl t-bg-surface border t-border shadow-2xl space-y-4">
+                    <div>
+                        <label for="cNama" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Nama Lengkap</label>
+                        <input type="text" id="cNama" required placeholder="Contoh: Nadia Pratama"
+                            class="editorial-input w-full px-4 py-3 rounded-xl text-sm">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="cBudget" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Kisaran Budget</label>
+                            <select id="cBudget" class="editorial-input w-full px-4 py-3 rounded-xl text-sm">
+                                <option value="Rp 1M - 1,5M">Rp 1M - 1,5M</option>
+                                <option value="Rp 1,5M - 2M" selected>Rp 1,5M - 2M</option>
+                                <option value="Di atas Rp 2M">Di atas Rp 2M</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cPembayaran" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Rencana Bayar</label>
+                            <select id="cPembayaran" class="editorial-input w-full px-4 py-3 rounded-xl text-sm">
+                                <option value="KPR">KPR</option>
+                                <option value="Cash Keras">Cash Keras</option>
+                                <option value="Cash Bertahap">Cash Bertahap</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="cArea" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Area Incaran</label>
+                        <select id="cArea" class="editorial-input w-full px-4 py-3 rounded-xl text-sm">
+                            <option value="Austin Residence - Paramount Gading Serpong">Austin Residence | Paramount Gading Serpong</option>
+                            <option value="Summarecon Serpong">Summarecon Serpong</option>
+                            <option value="Alam Sutera">Alam Sutera</option>
+                            <option value="BSD City">BSD City</option>
+                            <option value="Area Tangerang Lainnya">Area Tangerang Lainnya</option>
+                        </select>
+                    </div>
+
+                    <button type="submit"
+                        class="btn-primary w-full py-3.5 sm:py-4 rounded-xl font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl mt-2 cursor-pointer">
+                        <i data-lucide="send" class="w-4 h-4 shrink-0"></i>
+                        <span>Kirim &amp; Lanjut ke WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Minimalist Footer (Divided by Vertical Line, Zero Bullets) -->
+            <footer class="max-w-7xl mx-auto w-full pt-6 mt-6 border-t t-border flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-xs t-text-muted text-center sm:text-left">
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <span class="t-text-primary font-semibold">THE HAVENELLE</span>
+                    <span class="w-px h-3 bg-white/25"></span>
+                    <span>Affiliated with Windfield</span>
+                    <span class="w-px h-3 bg-white/25"></span>
+                    <span>Tangerang</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://instagram.com/thehavenelle" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-1.5 t-text-secondary hover:t-accent transition-colors">
+                        <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
+                        <span>@thehavenelle</span>
+                    </a>
+                    <span class="w-px h-3 bg-white/25"></span>
+                    <button onclick="scrollToSlide(0)" class="flex items-center gap-1 hover:t-accent transition-colors cursor-pointer">
+                        <span>Ke Atas</span>
+                        <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- ================================================================ -->
+    <!-- MODAL 1: QUICK INQUIRY MODAL (TRIGGERED BY PROPERTY CTAs)        -->
+    <!-- ================================================================ -->
+    <div id="quickInquiryModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-3.5 sm:p-4 bg-black/80 backdrop-blur-md" onclick="closeModalOnBackdrop(event, 'quickInquiryModal')">
+        <div class="modal-panel w-full max-w-md rounded-2xl t-bg-surface border t-border-accent shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-5 py-4 border-b t-border">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.2em] t-accent font-semibold">The Havenelle | WhatsApp</p>
+                    <h3 id="qiModalTitle" class="font-serif text-lg sm:text-xl font-semibold t-text-primary mt-0.5">Minta Pricelist &amp; Simulasi KPR</h3>
+                </div>
+                <button onclick="closeModal('quickInquiryModal')" class="p-2 rounded-full hover:bg-white/10 t-text-secondary cursor-pointer" aria-label="Tutup">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form id="quickInquiryForm" onsubmit="submitQuickInquiryForm(event)" class="p-5 space-y-3.5">
+                <div>
+                    <label for="qiUnit" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Unit / Cluster Dipilih</label>
+                    <input type="text" id="qiUnit" readonly
+                        class="editorial-input w-full px-3.5 py-2.5 rounded-xl text-xs sm:text-sm opacity-85 cursor-not-allowed">
+                </div>
+
+                <div>
+                    <label for="qiNama" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Nama Lengkap</label>
+                    <input type="text" id="qiNama" required placeholder="Masukkan nama Anda"
+                        class="editorial-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                        <label for="qiBudget" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Kisaran Budget</label>
+                        <select id="qiBudget" class="editorial-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            <option value="Rp 1M - 1,5M">Rp 1M - 1,5M</option>
+                            <option value="Rp 1,5M - 2M" selected>Rp 1,5M - 2M</option>
+                            <option value="Di atas Rp 2M">Di atas Rp 2M</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="qiPembayaran" class="block text-[11px] uppercase tracking-wider t-text-muted mb-1.5">Rencana Bayar</label>
+                        <select id="qiPembayaran" class="editorial-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            <option value="KPR">KPR</option>
+                            <option value="Cash Keras">Cash Keras</option>
+                            <option value="Cash Bertahap">Cash Bertahap</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="btn-primary w-full py-3.5 rounded-xl font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 shadow-lg cursor-pointer">
+                    <i data-lucide="send" class="w-4 h-4 shrink-0"></i>
+                    <span>Kirim &amp; Lanjut ke WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- MODAL 2: SPESIFIKASI LENGKAP AUSTIN RESIDENCE (ZERO BULLETS)     -->
+    <!-- ================================================================ -->
+    <div id="austinSpecsModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md" onclick="closeModalOnBackdrop(event, 'austinSpecsModal')">
+        <div class="modal-panel relative w-full max-w-4xl max-h-[88dvh] overflow-y-auto rounded-2xl t-bg-surface border t-border-accent shadow-2xl">
+            <div class="sticky top-0 z-20 flex items-center justify-between px-5 sm:px-6 py-4 t-bg-surface border-b t-border">
+                <div>
+                    <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] t-accent">Paramount Gading Serpong | Paramount Land</p>
+                    <h3 class="font-serif text-xl sm:text-2xl font-semibold t-text-primary mt-0.5">Austin Residence</h3>
+                </div>
+                <button onclick="closeModal('austinSpecsModal')" class="p-2 rounded-full hover:bg-white/10 t-text-secondary cursor-pointer" aria-label="Tutup">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="p-5 sm:p-7 space-y-6">
+                <!-- Pilihan Tipe Unit -->
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-[0.18em] t-accent mb-3">Pilihan Tipe Unit</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div class="p-4 sm:p-5 rounded-xl t-bg-primary border t-border space-y-2.5">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold t-bg-accent-soft t-accent">Tipe 6x16</span>
+                                <span class="text-xs t-text-muted">Standard &amp; Corner</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1 text-xs sm:text-sm">
+                                <div class="border-l-2 t-border-accent pl-2.5">
+                                    <p class="text-[10px] uppercase t-text-muted">Luas Tanah</p>
+                                    <p class="font-medium t-text-primary">96 m² / Variabel</p>
+                                </div>
+                                <div class="border-l-2 t-border pl-2.5">
+                                    <p class="text-[10px] uppercase t-text-muted">Luas Bangunan</p>
+                                    <p class="font-medium t-text-primary">86 m² (2 Lantai)</p>
+                                </div>
+                            </div>
+                            <p class="text-xs t-text-secondary pt-1 border-t t-border">
+                                3 Kamar Tidur | Carport 2 Mobil | Expandable Backyard
+                            </p>
+                        </div>
+
+                        <div class="p-4 sm:p-5 rounded-xl t-bg-primary border t-border space-y-2.5">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold t-bg-accent-soft t-accent">Tipe 8x14-16</span>
+                                <span class="text-xs t-text-muted">Standard &amp; Corner</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1 text-xs sm:text-sm">
+                                <div class="border-l-2 t-border-accent pl-2.5">
+                                    <p class="text-[10px] uppercase t-text-muted">Luas Tanah</p>
+                                    <p class="font-medium t-text-primary">112-128 m² / Var</p>
+                                </div>
+                                <div class="border-l-2 t-border pl-2.5">
+                                    <p class="text-[10px] uppercase t-text-muted">Luas Bangunan</p>
+                                    <p class="font-medium t-text-primary">119 m² (2 Lantai)</p>
+                                </div>
+                            </div>
+                            <p class="text-xs t-text-secondary pt-1 border-t t-border">
+                                3 Kamar Tidur | Carport 2 Mobil | Atap Bitumen Asphalt
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitur Spesial (Clean Pill Grid, No Bullets) -->
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-[0.18em] t-accent mb-3">Fitur Spesial &amp; Spesifikasi Teknis</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                        <div class="p-3 rounded-xl t-bg-primary border t-border flex items-center gap-2.5 text-xs sm:text-sm">
+                            <i data-lucide="lock" class="w-4 h-4 t-accent shrink-0"></i>
+                            <span class="t-text-primary">Smart Door Lock (Onassis)</span>
+                        </div>
+                        <div class="p-3 rounded-xl t-bg-primary border t-border flex items-center gap-2.5 text-xs sm:text-sm">
+                            <i data-lucide="zap" class="w-4 h-4 t-accent shrink-0"></i>
+                            <span class="t-text-primary">EV Charging 3 Phase</span>
+                        </div>
+                        <div class="p-3 rounded-xl t-bg-primary border t-border flex items-center gap-2.5 text-xs sm:text-sm">
+                            <i data-lucide="flame" class="w-4 h-4 t-accent shrink-0"></i>
+                            <span class="t-text-primary">Electric Water Heater</span>
+                        </div>
+                        <div class="p-3 rounded-xl t-bg-primary border t-border flex items-center gap-2.5 text-xs sm:text-sm">
+                            <i data-lucide="droplets" class="w-4 h-4 t-accent shrink-0"></i>
+                            <span class="t-text-primary">Water Filter &amp; Air PERUMDAM</span>
+                        </div>
+                        <div class="p-3 rounded-xl t-bg-primary border t-border flex items-center gap-2.5 text-xs sm:text-sm">
+                            <i data-lucide="plug" class="w-4 h-4 t-accent shrink-0"></i>
+                            <span class="t-text-primary">Listrik 3.500 VA</span>
+                        </div>
+                        <div class="p-3 rounded-xl t-bg-primary border t-border flex items-center gap-2.5 text-xs sm:text-sm">
+                            <i data-lucide="trees" class="w-4 h-4 t-accent shrink-0"></i>
+                            <span class="t-text-primary">Expandable Backyard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exclusive Clubhouse & Akses -->
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-[0.18em] t-accent mb-3">Exclusive Clubhouse &amp; Lokasi Strategis</h4>
+                    <div class="p-4 sm:p-5 rounded-xl t-bg-primary border t-border space-y-3">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-lg text-xs font-medium t-bg-accent-soft t-accent">Swimming Pool</span>
+                            <span class="px-3 py-1 rounded-lg text-xs font-medium t-bg-accent-soft t-accent">Children Pool</span>
+                            <span class="px-3 py-1 rounded-lg text-xs font-medium t-bg-accent-soft t-accent">Children's Playground</span>
+                            <span class="px-3 py-1 rounded-lg text-xs font-medium t-bg-accent-soft t-accent">3-on-3 Basketball Court</span>
+                            <span class="px-3 py-1 rounded-lg text-xs font-medium t-bg-accent-soft t-accent">Indoor Lounge</span>
+                        </div>
+                        <p class="text-xs sm:text-sm t-text-secondary leading-relaxed border-t t-border pt-3">
+                            Akses dekat Tol BSD &amp; Serbaraja, Tol Jakarta-Merak, dan Tol Jakarta-Serpong. Dikelilingi Summarecon Mall Serpong, Qbig, AEON, Mall Alam Sutera, RS Bethsaida, dan UMN.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bottom CTA -->
+                <div class="pt-4 border-t t-border flex flex-col sm:flex-row items-center justify-between gap-3.5">
+                    <p class="text-xs t-text-secondary text-center sm:text-left">
+                        Dapatkan e-brosur resmi, denah lantai, dan simulasi KPR Austin Residence via WhatsApp.
+                    </p>
+                    <button onclick="closeModal('austinSpecsModal'); handlePropertyCTA('Austin Residence - Paramount Gading Serpong', 'Minta Pricelist & Simulasi KPR');"
+                        class="btn-primary w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shrink-0">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>Minta Pricelist &amp; Simulasi KPR</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- MODAL 3: LOG LEADS & CTA TRACKER (LOCALSTORAGE + CSV EXPORT)     -->
+    <!-- ================================================================ -->
+    <div id="leadsModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md" onclick="closeModalOnBackdrop(event, 'leadsModal')">
+        <div class="modal-panel relative w-full max-w-5xl max-h-[88dvh] flex flex-col rounded-2xl t-bg-surface border t-border-accent shadow-2xl overflow-hidden">
+            <div class="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b t-border">
+                <div>
+                    <p class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] t-accent">Lead &amp; CTA Analytics | LocalStorage</p>
+                    <h3 class="font-serif text-lg sm:text-2xl font-semibold t-text-primary mt-0.5">Data Klik CTA &amp; Customer Lead</h3>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="downloadLeadsCSV()"
+                        class="btn-primary px-3.5 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 cursor-pointer">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        <span>Download CSV</span>
+                    </button>
+                    <button onclick="clearDemoLogs()"
+                        class="px-3 py-2 rounded-lg text-xs font-medium border border-red-500/40 text-red-400 hover:bg-red-500/15 transition-colors cursor-pointer">
+                        Hapus Log
+                    </button>
+                    <button onclick="closeModal('leadsModal')" class="p-2 rounded-full hover:bg-white/10 t-text-secondary cursor-pointer" aria-label="Tutup">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 overflow-auto flex-1">
+                <div class="overflow-x-auto rounded-xl border t-border">
+                    <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                        <thead>
+                            <tr class="t-bg-primary border-b t-border t-text-muted uppercase text-[10px] sm:text-[11px] tracking-wider">
+                                <th class="py-3 px-3.5">Waktu</th>
+                                <th class="py-3 px-3.5">Event</th>
+                                <th class="py-3 px-3.5">Unit / Area</th>
+                                <th class="py-3 px-3.5">Nama</th>
+                                <th class="py-3 px-3.5">Budget</th>
+                                <th class="py-3 px-3.5">Pembayaran</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody" class="divide-y divide-white/10 t-text-secondary">
+                            <!-- Diisi otomatis oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-[11px] t-text-muted mt-3 leading-relaxed">
+                    Data tersimpan otomatis di browser (<code class="t-text-primary">localStorage</code>) dan siap dikirim ke Google Sheets setelah <code class="t-text-primary">GOOGLE_SCRIPT_URL</code> diisi di bagian atas script.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- OVERLAY 4: SIMULASI PREVIEW LAYAR HP (390 x 844 px)              -->
+    <!-- ================================================================ -->
+    <div id="mobilePreviewOverlay" class="modal-backdrop fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-black/92 backdrop-blur-xl">
+        <!-- Top Control Bar for Mobile Simulator -->
+        <div class="w-full max-w-xl flex items-center justify-between gap-3 mb-4 px-2">
+            <div class="flex items-center gap-2.5 text-white">
+                <div class="w-8 h-8 rounded-lg t-bg-accent-soft t-accent flex items-center justify-center">
+                    <i data-lucide="smartphone" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold tracking-wide text-white">Simulasi Tampilan HP</p>
+                    <p class="text-[11px] text-white/60">Viewport 390 x 844 px | Interaktif &amp; Bisa Di-scroll</p>
+                </div>
+            </div>
+            <button onclick="closeMobilePreview()"
+                class="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-white text-black hover:opacity-90 transition-all cursor-pointer">
+                <i data-lucide="monitor" class="w-3.5 h-3.5"></i>
+                <span>Kembali ke Desktop</span>
+            </button>
+        </div>
+
+        <!-- Phone Frame (390 x 844 px) -->
+        <div class="phone-bezel">
+            <iframe id="mobilePreviewFrame" name="havenelle-mobile-preview" title="Preview HP The Havenelle" class="w-full h-full border-0 bg-[#08080A]"></iframe>
+        </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATION (NO ALERT) ==================== -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-black/90 border t-border-accent text-white text-xs font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 translate-y-3 whitespace-nowrap">
+        Notifikasi
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // ============================================================
+        // KONFIGURASI UTAMA — Ubah di sini sebelum website dipublikasikan
+        // ============================================================
+        // 1. Nomor WhatsApp The Havenelle (format internasional 628xxx tanpa + atau 0)
+        const WHATSAPP_NUMBER = "6281234567890";
+
+        // 2. URL Web App Google Apps Script untuk simpan otomatis ke Google Sheets
+        //    Kosongkan "" jika masih tahap demo/testing lokal.
+        const GOOGLE_SCRIPT_URL = "";
+
+        // Key penyimpanan lokal untuk Log Leads & preferensi tampilan
+        const STORAGE_KEY = "the_havenelle_leads_v2";
+        const THEME_KEY = "the_havenelle_theme_v2";
+        const BLUEPRINT_KEY = "the_havenelle_blueprint_v2";
+
+        // State Aplikasi
+        let currentHeroSlide = 0;
+        let currentTheme = "dark-bold";
+        let isBlueprintOn = false;
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+
+            // Jika sedang berjalan di dalam iframe Preview HP, sembunyikan switcher Desktop/HP
+            if (window.name === "havenelle-mobile-preview") {
+                const switcher = document.getElementById("deviceSwitcherWrap");
+                if (switcher) switcher.style.display = "none";
+            }
+
+            initTheme();
+            initBlueprint();
+            initHeroSlideshow();
+            initScrollObserver();
+            updateLeadsCounter();
+        });
+
+        // ============================================================
+        // 1. SIMULASI PREVIEW LAYAR HP (390 x 844 px)
+        // ============================================================
+        function openMobilePreview() {
+            const overlay = document.getElementById("mobilePreviewOverlay");
+            const frame = document.getElementById("mobilePreviewFrame");
+            const btnDesktop = document.getElementById("btnViewDesktop");
+            const btnMobile = document.getElementById("btnViewMobile");
+
+            // Pastikan semua modal lain tertutup sebelum mengambil snapshot HTML
+            closeModal("quickInquiryModal");
+            closeModal("austinSpecsModal");
+            closeModal("leadsModal");
+
+            // Ambil HTML halaman saat ini sebelum overlay dibuka agar tidak rekursif
+            const snapshotHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            frame.srcdoc = snapshotHtml;
+
+            overlay.classList.add("open");
+
+            // Update visual switcher Desktop / HP
+            if (btnDesktop && btnMobile) {
+                btnDesktop.className = "flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-medium text-white/80 hover:text-white transition-all cursor-pointer";
+                btnMobile.className = "flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-semibold bg-white text-black transition-all cursor-pointer";
+            }
+        }
+
+        function closeMobilePreview() {
+            const overlay = document.getElementById("mobilePreviewOverlay");
+            const frame = document.getElementById("mobilePreviewFrame");
+            const btnDesktop = document.getElementById("btnViewDesktop");
+            const btnMobile = document.getElementById("btnViewMobile");
+
+            overlay.classList.remove("open");
+            // Bersihkan iframe setelah transisi selesai
+            setTimeout(() => {
+                if (!overlay.classList.contains("open")) {
+                    frame.srcdoc = "";
+                }
+            }, 260);
+
+            if (btnDesktop && btnMobile) {
+                btnDesktop.className = "flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-semibold bg-white text-black transition-all cursor-pointer";
+                btnMobile.className = "flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-medium text-white/80 hover:text-white transition-all cursor-pointer";
+            }
+
+            // Sinkronkan ulang state jika ada perubahan di dalam preview HP
+            initTheme();
+            initBlueprint();
+            updateLeadsCounter();
+        }
+
+        // ============================================================
+        // 2. THEME SWITCHER (Tema 1: Dark Bold vs Tema 2: Warm Luxury)
+        // ============================================================
+        function initTheme() {
+            const savedTheme = localStorage.getItem(THEME_KEY);
+            if (savedTheme === "warm-luxury" || savedTheme === "dark-bold") {
+                applyTheme(savedTheme, false);
+            } else {
+                applyTheme("dark-bold", false);
+            }
+        }
+
+        function toggleTheme() {
+            const nextTheme = currentTheme === "dark-bold" ? "warm-luxury" : "dark-bold";
+            applyTheme(nextTheme, true);
+        }
+
+        function applyTheme(theme, notify) {
+            currentTheme = theme;
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem(THEME_KEY, theme);
+
+            const label = document.getElementById("themeLabel");
+            const labelShort = document.getElementById("themeLabelShort");
+            const swatch = document.getElementById("themeSwatch");
+
+            if (theme === "dark-bold") {
+                if (label) label.textContent = "Tema 1: Dark Bold";
+                if (labelShort) labelShort.textContent = "Tema 1";
+                if (swatch) swatch.style.backgroundColor = "#DDF247";
+            } else {
+                if (label) label.textContent = "Tema 2: Warm Luxury";
+                if (labelShort) labelShort.textContent = "Tema 2";
+                if (swatch) swatch.style.backgroundColor = "#C5A368";
+            }
+
+            if (notify && label) {
+                showToast(`Aktif: ${label.textContent}`);
+            }
+        }
+
+        // ============================================================
+        // 3. MODE BLUEPRINT (Panduan Slot Foto & Placeholder)
+        // ============================================================
+        function initBlueprint() {
+            const saved = localStorage.getItem(BLUEPRINT_KEY) === "on";
+            applyBlueprint(saved, false);
+        }
+
+        function toggleBlueprint() {
+            applyBlueprint(!isBlueprintOn, true);
+        }
+
+        function applyBlueprint(state, notify) {
+            isBlueprintOn = state;
+            document.body.classList.toggle("blueprint-on", state);
+            localStorage.setItem(BLUEPRINT_KEY, state ? "on" : "off");
+
+            const btn = document.getElementById("blueprintToggleBtn");
+            const label = document.getElementById("blueprintLabel");
+            if (label) label.textContent = state ? "Blueprint: ON" : "Blueprint: OFF";
+            if (btn) {
+                btn.style.borderColor = state ? "var(--accent)" : "";
+                btn.style.color = state ? "var(--accent)" : "";
+            }
+            if (notify) {
+                showToast(state ? "Mode Blueprint aktif" : "Mode Blueprint dimatikan");
+            }
+        }
+
+        // ============================================================
+        // 4. HERO SLIDESHOW & SNAP SCROLL NAVIGATION
+        // ============================================================
+        function initHeroSlideshow() {
+            setInterval(() => {
+                setHeroSlide((currentHeroSlide + 1) % 3);
+            }, 5500);
+        }
+
+        function setHeroSlide(index) {
+            const slides = document.querySelectorAll(".hero-bg-slide");
+            const indicators = document.querySelectorAll(".hero-ind");
+
+            slides.forEach((s, i) => s.classList.toggle("active", i === index));
+            indicators.forEach((ind, i) => {
+                if (i === index) {
+                    ind.classList.remove("w-4", "bg-white/30");
+                    ind.classList.add("w-8");
+                    ind.style.backgroundColor = "var(--accent)";
+                } else {
+                    ind.classList.remove("w-8");
+                    ind.classList.add("w-4", "bg-white/30");
+                    ind.style.backgroundColor = "";
+                }
+            });
+            currentHeroSlide = index;
+        }
+
+        function scrollToSlide(index) {
+            const el = document.getElementById(`slide-${index}`);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function initScrollObserver() {
+            const container = document.getElementById("snapContainer");
+            const sections = document.querySelectorAll(".slide-section");
+            const navSteps = document.querySelectorAll(".nav-step");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("slide-visible");
+                        const idx = parseInt(entry.target.id.replace("slide-", ""), 10);
+                        navSteps.forEach((step, i) => step.classList.toggle("active", i === idx));
+                    }
+                });
+            }, { root: container, threshold: 0.4 });
+
+            sections.forEach((sec) => observer.observe(sec));
+        }
+
+        // ============================================================
+        // 5. LEAD CAPTURE, CTA TRACKING & GOOGLE SHEETS SYNC
+        // ============================================================
+        function getStoredLeads() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch (err) {
+                console.error("Gagal membaca localStorage:", err);
+                return [];
+            }
+        }
+
+        function saveLeadRecord(record) {
+            const leads = getStoredLeads();
+            leads.unshift(record);
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+            } catch (err) {
+                console.error("Gagal menyimpan ke localStorage:", err);
+            }
+            updateLeadsCounter();
+
+            // Kirim otomatis ke Google Sheets jika GOOGLE_SCRIPT_URL sudah diisi
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== "") {
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: JSON.stringify(record)
+                }).catch((err) => console.error("Gagal mengirim ke Google Script:", err));
+            }
+        }
+
+        function formatTimestamp() {
+            return new Date().toLocaleString("id-ID", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+        }
+
+        function logCtaEvent(unitName) {
+            saveLeadRecord({
+                timestamp: formatTimestamp(),
+                eventType: "CTA Click",
+                unit: unitName,
+                nama: "-",
+                budget: "-",
+                pembayaran: "-"
+            });
+        }
+
+        function updateLeadsCounter() {
+            const count = getStoredLeads().length;
+            const badge = document.getElementById("leadsCountBadge");
+            if (badge) badge.textContent = count;
+        }
+
+        // ============================================================
+        // 6. FORM SUBMISSION -> SIMPAN LEAD -> LANGSUNG KE WHATSAPP
+        // ============================================================
+        function handlePropertyCTA(unitName, modalHeading) {
+            logCtaEvent(unitName);
+            document.getElementById("qiModalTitle").textContent = modalHeading || "Minta Pricelist & Simulasi KPR";
+            document.getElementById("qiUnit").value = unitName;
+            openModal("quickInquiryModal");
+        }
+
+        function submitQuickInquiryForm(event) {
+            event.preventDefault();
+            const unit = document.getElementById("qiUnit").value.trim();
+            const nama = document.getElementById("qiNama").value.trim();
+            const budget = document.getElementById("qiBudget").value;
+            const pembayaran = document.getElementById("qiPembayaran").value;
+
+            saveLeadRecord({
+                timestamp: formatTimestamp(),
+                eventType: "Form Lead",
+                unit,
+                nama,
+                budget,
+                pembayaran
+            });
+
+            const message =
+                `Halo The Havenelle, saya *${nama}* tertarik dengan unit *${unit}* dari website.\n\n` +
+                `Boleh minta pricelist, brosur, dan simulasi KPR-nya?\n` +
+                `Kisaran Budget: ${budget}\n` +
+                `Rencana Bayar: ${pembayaran}\n\n` +
+                `Terima kasih.`;
+
+            closeModal("quickInquiryModal");
+            document.getElementById("quickInquiryForm").reset();
+            openWhatsApp(message);
+        }
+
+        function submitConsultationForm(event) {
+            event.preventDefault();
+            const nama = document.getElementById("cNama").value.trim();
+            const budget = document.getElementById("cBudget").value;
+            const pembayaran = document.getElementById("cPembayaran").value;
+            const unit = document.getElementById("cArea").value;
+
+            saveLeadRecord({
+                timestamp: formatTimestamp(),
+                eventType: "Form Lead",
+                unit,
+                nama,
+                budget,
+                pembayaran
+            });
+
+            const message =
+                `Halo The Havenelle, saya *${nama}* sedang mencari rumah cluster di area Tangerang. Boleh minta rekomendasi unit yang sesuai?\n\n` +
+                `Area Incaran: ${unit}\n` +
+                `Kisaran Budget: ${budget}\n` +
+                `Rencana Bayar: ${pembayaran}\n\n` +
+                `Terima kasih.`;
+
+            document.getElementById("consultForm").reset();
+            openWhatsApp(message);
+        }
+
+        function openWhatsApp(message) {
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, "_blank", "noopener,noreferrer");
+            showToast("Data tersimpan! Membuka WhatsApp...");
+        }
+
+        // ============================================================
+        // 7. MODALS, TABEL LEADS & EXPORT CSV
+        // ============================================================
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.add("open");
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.remove("open");
+        }
+
+        function closeModalOnBackdrop(event, id) {
+            if (event.target.id === id) closeModal(id);
+        }
+
+        function openAustinSpecsModal() {
+            openModal("austinSpecsModal");
+        }
+
+        function openLeadsModal() {
+            renderLeadsTable();
+            openModal("leadsModal");
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeModal("quickInquiryModal");
+                closeModal("austinSpecsModal");
+                closeModal("leadsModal");
+                if (document.getElementById("mobilePreviewOverlay").classList.contains("open")) {
+                    closeMobilePreview();
+                }
+            }
+        });
+
+        function renderLeadsTable() {
+            const tbody = document.getElementById("leadsTableBody");
+            const leads = getStoredLeads();
+
+            if (!leads.length) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="py-10 text-center t-text-muted">
+                            Belum ada data klik CTA atau customer lead. Coba klik tombol CTA atau isi form konsultasi.
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            tbody.innerHTML = leads.map((item) => {
+                const badgeClass = item.eventType === "Form Lead"
+                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                    : "bg-amber-500/15 text-amber-300 border border-amber-500/30";
+                return `
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="py-3 px-3.5 whitespace-nowrap t-text-muted">${escapeHtml(item.timestamp)}</td>
+                        <td class="py-3 px-3.5 whitespace-nowrap">
+                            <span class="px-2 py-0.5 rounded-md text-[11px] font-medium ${badgeClass}">${escapeHtml(item.eventType)}</span>
+                        </td>
+                        <td class="py-3 px-3.5 t-text-primary font-medium">${escapeHtml(item.unit)}</td>
+                        <td class="py-3 px-3.5">${escapeHtml(item.nama)}</td>
+                        <td class="py-3 px-3.5 whitespace-nowrap">${escapeHtml(item.budget)}</td>
+                        <td class="py-3 px-3.5 whitespace-nowrap">${escapeHtml(item.pembayaran)}</td>
+                    </tr>`;
+            }).join("");
+        }
+
+        function downloadLeadsCSV() {
+            const leads = getStoredLeads();
+            if (!leads.length) {
+                showToast("Belum ada data untuk diunduh.");
+                return;
+            }
+
+            const headers = ["Waktu", "Event", "Unit / Area", "Nama", "Budget", "Pembayaran"];
+            const rows = leads.map((l) => [
+                l.timestamp, l.eventType, l.unit, l.nama, l.budget, l.pembayaran
+            ]);
+
+            const csvContent = "\uFEFF" + [headers, ...rows]
+                .map((row) => row.map((val) => `"${String(val).replace(/"/g, '""')}"`).join(","))
+                .join("\n");
+
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `leads-the-havenelle-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            showToast("File CSV berhasil diunduh!");
+        }
+
+        function clearDemoLogs() {
+            localStorage.removeItem(STORAGE_KEY);
+            updateLeadsCounter();
+            renderLeadsTable();
+            showToast("Semua log demo berhasil dihapus.");
+        }
+
+        function escapeHtml(text) {
+            return String(text ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        // ============================================================
+        // 8. TOAST HELPER (TANPA ALERT)
+        // ============================================================
+        let toastTimer;
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.textContent = msg;
+            toast.classList.remove("opacity-0", "translate-y-3", "pointer-events-none");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add("opacity-0", "translate-y-3", "pointer-events-none");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
